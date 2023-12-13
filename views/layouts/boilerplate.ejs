@@ -10,9 +10,11 @@
 </head>
 
 <body class="d-flex flex-column vh-100">
+
     <%- include(`../partials/navbar`) %>
         <main class="cotainer mt-4">
-            <%- body %>
+            <%- include(`../partials/flash`) %>
+                <%- body %>
         </main>
         <%- include(`../partials/footer`) %>
 
@@ -24,27 +26,9 @@
                 integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
                 crossorigin="anonymous"></script>
 
+            <script src="/javascripts/validateForms.js"></script>
 </body>
 
-<script>
-    (() => {
-        'use strict'
 
-
-        const forms = document.querySelectorAll('.validated-form')
-
-
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-</script>
 
 </html>

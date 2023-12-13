@@ -1,6 +1,6 @@
 <%- layout('layouts/boilerplate') %>
 
-    <div class="container mx-auto"> <!-- Added mx-auto for center alignment -->
+    <div class="container mx-auto">
 
         <h1>All campgrounds</h1>
 
@@ -9,7 +9,8 @@
             <div class="card mb-3">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="<%= campground.image %>" alt="" class="img-fluid">
+                        <img src="<%= campground.image %>" alt="" class="img-fluid rounded"
+                            style="width: 300px; height: 200px;">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
