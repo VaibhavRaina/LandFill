@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const Review = require(`./review`);
 const { fileLoader } = require("ejs");
 const { func, number } = require("joi");
-
+const opts={toJSON:{virtuals:true}};
 
 const ImageSchema = new Schema(
     {
@@ -44,7 +44,7 @@ const campGroundSchema = new Schema({
             required: true
         }
     }
-})
+},opts);
 
 campGroundSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
@@ -53,6 +53,11 @@ campGroundSchema.post('findOneAndDelete', async function (doc) {
         });
     }
 });
+
+campGroundSchema.virtual(`properties.popUpMarkup`).get(function () {
+    return `<strong><a href="/campgrounds/${this._id}">${this.title}</a></strong>
+    <p>${this.description.substring(0,20)}...</p>`
+})
 
 
 
