@@ -53,8 +53,10 @@ app.use(
     "https://cdnjs.cloudflare.com/",
     "https://cdn.jsdelivr.net",
     "https://cdn.jsdelivr.net",
+    "https://cdn.jsdelivr.net/"
 ];
 const styleSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
     "https://kit-free.fontawesome.com/",
     "https://stackpath.bootstrapcdn.com/",
     "https://api.mapbox.com/",
