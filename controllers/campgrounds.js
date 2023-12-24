@@ -22,6 +22,11 @@ module.exports.createCampground = async function (req, res) {
         limit: 1
     }).send()
     const campground = new Campground(req.body.campground);
+    if(req.body.campground.price>10000){
+        req.flash(`error`,"Enter a valid price less than 100000");
+        res.redirect(`/campgrounds/new`);
+    }
+    else{
     campground.geometry = geoData.body.features[0].geometry;
     campground.images = req.files.map(function (f) {
         return ({ url: f.path, filename: f.filename })
@@ -32,6 +37,7 @@ module.exports.createCampground = async function (req, res) {
     console.log(campground);
     req.flash(`success`, `Success In Creating A Campground `);
     res.redirect(`/campgrounds/${campground._id}`);
+}
 }
 module.exports.showCampground = async function (req, res) {
     const { id } = req.params;
