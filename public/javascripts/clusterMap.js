@@ -1,6 +1,6 @@
 mapboxgl.accessToken = mapToken;
 const map = new mapboxgl.Map({
-    container: 'map',
+    container: 'cluster-map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     style: 'mapbox://styles/mapbox/light-v11',
     center: [-103.5917, 40.6699],
@@ -96,6 +96,8 @@ map.on('load', () => {
             }
         );
     });
+
+    map.addControl(new mapboxgl.NavigationControl());
 
     // When a click event occurs on a feature in
     // the unclustered-point layer, open a popup at
