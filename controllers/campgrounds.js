@@ -68,6 +68,21 @@ module.exports.showCampground = async function (req, res) {
     res.render(`campgrounds/show`, { campground })
 }
 
+module.exports.bidsCampground = async function (req, res) {
+    const { id } = req.params;
+    const campground = await Campground.findById(id).populate({
+        path: `reviews`,
+        populate: {
+            path: `author`,
+        }
+    }).populate(`author`);
+    if (!campground) {
+        req.flash(`error`, `No Campground Found `);
+        return res.redirect(`/campgrounds`);
+    }
+    res.render(`campgrounds/bids`, { campground })
+}
+
 module.exports.renderEditForm = async function (req, res) {
     const { id } = req.params;
     const campground = await Campground.findById(id);

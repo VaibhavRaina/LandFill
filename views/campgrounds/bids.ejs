@@ -52,10 +52,9 @@
                             <%=campground.author.username%>
                         </b>
                     </li>
-                    <li class="list-group-item">$<%= campground.price%></li>
-                    <li class="list-group-item"><label class="form-label" for="description"><b>History</b></label>
-                        <textarea disabled class="form-control" type="text" name="campground[description]" id="description"
-                            required></textarea></li>
+                    <li class="list-group-item"> <b>Highest bid--$<%= campground.price%>00</b></li>
+                    <li class="list-group-item"><label class="form-label" for="description"><b>All Bidders</b><br>1.Vaibhav--$3200<br>2.Manu-$3700</label>
+                        </li>
                 </ul>
                 <% if(currentUser&&campground.author.equals(currentUser)){ %>
                     <div class="card-body">
