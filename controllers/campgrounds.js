@@ -23,7 +23,13 @@ module.exports.buy = async function (req, res) {
 module.exports.buyed = async function (req, res) {
     res.render(`campgrounds/buyed`);
 }
-
+module.exports.sell = async function (req, res) {
+    const campgrounds = await Campground.find({});
+    res.render(`campgrounds/sell`,{campgrounds});
+}
+module.exports.sold = async function (req, res) {
+    res.render(`campgrounds/sold`);
+}
 
 module.exports.createCampground = async function (req, res) {
     const geoData = await geocoder.forwardGeocode({

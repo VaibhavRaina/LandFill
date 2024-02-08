@@ -28,6 +28,8 @@ router.route('/')
 router.get('/new', isLoggedIn, campground.renderNewForm);
 router.get('/buy', campground.buy); 
 router.get('/buyed', campground.buyed);
+router.get('/sell', campground.sell); 
+router.get('/sold', campground.sold);
 
 
 
