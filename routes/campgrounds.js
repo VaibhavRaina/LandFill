@@ -19,17 +19,24 @@ const upload = multer({ storage });
 
 router.route('/')
     .get(catchAsync(campground.index))
-    .post(isLoggedIn, upload.array(`image`), validateCampground, catchAsync(campground.createCampground))
+    .post(isLoggedIn, upload.array(`image`), validateCampground, catchAsync(campground.createCampground));
 
-router.get('/new', isLoggedIn, campground.renderNewForm)
+
+
+
+
+router.get('/new', isLoggedIn, campground.renderNewForm);
+router.get('/buy', campground.buy); 
+router.get('/buyed', campground.buyed);
+
+
+
 
 router.route('/:id')
     .get(catchAsync(campground.showCampground))
     .put(isLoggedIn, isAuthor, upload.array(`image`), validateCampground, catchAsync(campground.updateCampground))
     .delete(isLoggedIn, isAuthor, catchAsync(campground.deleteCampground));
 
-router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campground.renderEditForm))
-
-
+router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campground.renderEditForm));
 
 module.exports = router;

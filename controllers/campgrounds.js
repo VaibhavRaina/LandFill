@@ -16,6 +16,15 @@ module.exports.renderNewForm = async function (req, res) {
     res.render(`campgrounds/new`)
 }
 
+module.exports.buy = async function (req, res) {
+    const campgrounds = await Campground.find({});
+    res.render(`campgrounds/buy`,{campgrounds});
+}
+module.exports.buyed = async function (req, res) {
+    res.render(`campgrounds/buyed`);
+}
+
+
 module.exports.createCampground = async function (req, res) {
     const geoData = await geocoder.forwardGeocode({
         query: req.body.campground.location,
@@ -34,7 +43,6 @@ module.exports.createCampground = async function (req, res) {
     console.log(campground.geometry.coordinates);
     campground.author = req.user._id;
     await campground.save();
-    console.log(campground);
     req.flash(`success`, `Success In Creating A Campground `);
     res.redirect(`/campgrounds/${campground._id}`);
 }
